@@ -7,20 +7,21 @@ prices = ["6558.07", "468.95", "0.487526", "762.84", "8.86", "85.26", "0.151268"
 
 #L'acceuil
 def accueil(all_of_cryptocurrrencys)
-  user_takes = ""
-  while user_takes != "x"
+  number = ""
+  while number != "x"
     print "\n" + '/' * 50 + '\\' * 50 + "\n\n"
     puts "Bonjour à vous, voici quelques questions qui pourraient vous concerner."
       print "\n" + '/' * 50 + '\\' * 50 + "\n\n"
-      puts "             1 - La ou les crypto qui ont la plus grosse valeur ?
-              2 - La ou les crypto qui ont la plus petite valeur ?
-              3 - Les devises dont le cours est inférieur à 6000 ?
-              4 - La devise la plus chère parmi celles dont le cours est inférieur à 6000 ?"
+      puts "             1 - Quelle sont les crypto qui ont la plus grosse valeur ?
+              2 - Quelles sont les crypto qui ont la plus petite valeur ?
+              3 - Quelles sont les devises dont le cours est inférieur à 6000 ?
+              4 - Quelle est la devise la plus chère parmi celles dont le cours est inférieur à 6000 ?
+              x - Quitter"
       print  "\n" + '/' * 50 + '\\' * 50 + "\n\n"
-      puts "quelle question te poses-tu ?"
+      puts "quelle question vous posez-vous ?"
       print "> "
-      user_takes = gets.chomp
-      case user_takes
+      number = gets.chomp
+      case number
       when "1"
           puts "\n La ou les cryptomonnaie qui ont la ou les plus grosse(s) valeur sont : #{biggest_hash_key(all_of_cryptocurrrencys)} \n\n"
       when "2"
@@ -43,22 +44,22 @@ all_of_cryptocurrrencys = Hash[coins.zip(prices.map(&:to_f))]
 
 #1. La ou les crypto qui ont la plus grosse valeur avec k pour les coins et v pour les prix.
 def biggest_hash_key(hash)
-    hash.select {|k, v| v == hash.values.max }
+    hash.select {|c, t| t == hash.values.max }
 end
 
 #2. La ou les crypto qui ont la plus petite valeur.
 def smallest_hash_key(hash)
-    hash.select {|k, v| v == hash.values.min }
+    hash.select {|c, t| t == hash.values.min }
 end
 
 #3. Les devises dont le cours est inférieur à 6000
 def inferior_currency(hash)
-    less_than_six_k = Hash[hash.select {|k, v| v < 6000}]
+    less_than_sixk = Hash[hash.select {|c, t| t < 6000}]
 end
 
 #4. La devise la plus chère parmi celles dont le cours est inférieur à 6000.
 def expensive_currency(hash)
-    hash.select {|k, v| v == hash.values.max }
+    hash.select {|c, t| t == hash.values.max }
 end
 
 
