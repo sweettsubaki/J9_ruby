@@ -42,7 +42,7 @@ end
 #Afin que les prix correspondent aux coins. 
 all_of_cryptocurrrencys = Hash[coins.zip(prices.map(&:to_f))]
 
-#1. La ou les crypto qui ont la plus grosse valeur avec k pour les coins et v pour les prix.
+#1. La ou les crypto qui ont la plus grosse valeur avec c pour les coins et t pour les prix.
 def biggest_hash_key(hash)
     hash.select {|c, t| t == hash.values.max }
 end
