@@ -59,7 +59,8 @@ end
 
 #4. La devise la plus chère parmi celles dont le cours est inférieur à 6000.
 def expensive_currency(hash)
-    hash.select {|c, t| t == hash.values.max }
+  less_than_sixk = Hash[hash.select {|c, t| t < 6000}]
+    less_than_sixk.select {|c, t| t == hash.values.max}
 end
 
 
